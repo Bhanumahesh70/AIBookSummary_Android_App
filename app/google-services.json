@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "822926105968",
+    "project_id": "aibooksummaryapp",
+    "storage_bucket": "aibooksummaryapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:822926105968:android:c3a19486b01497e83bc3b5",
+        "android_client_info": {
+          "package_name": "com.example.aibooksummaryapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "822926105968-kn4rs48e06npobfffk74n60h1soo1s1p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_MB_UuRSqErspYVdLV-KJzfooKSef1SE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "822926105968-kn4rs48e06npobfffk74n60h1soo1s1p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
