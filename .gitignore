@@ -1,0 +1,53 @@
+
+# Android specific
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.idea/compiler.xml
+.idea/gradle.xml
+.idea/encodings.xml
+.DS_Store
+
+# Gradle
+.gradle/
+**/build/
+
+# Android build outputs
+*.apk
+*.ap_
+*.dex
+
+# Native build
+.cxx/
+.externalNativeBuild/
+
+# Captures (screenshots, recordings)
+captures/
+
+# IntelliJ project files
+.idea/
+*.iml
+*.iws
+
+# Logs
+*.log
+
+# OS files
+Thumbs.db
+
+# Kotlin specific
+.kotlinc/
+
+# Node.js (if using React Native or similar)
+node_modules/
+
+# Keystore files (never commit secrets!)
+*.jks
+*.keystore
+
+.navigation/
+output.json
