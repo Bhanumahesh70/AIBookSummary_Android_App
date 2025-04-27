@@ -1,9 +1,8 @@
 package com.example.aibooksummaryapp;
-
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
-
+import com.example.aibooksummaryapp.R;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -59,6 +58,16 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+        // Navigation Item Clicks
+        navigationView.setNavigationItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.drawer_home) {
+                Toast.makeText(this, "Home Clicked", Toast.LENGTH_SHORT).show();
+            } else if (item.getItemId() == R.id.drawer_about) {
+                Toast.makeText(this, "About Clicked", Toast.LENGTH_SHORT).show();
+            }
+            drawerLayout.closeDrawer(navigationView);
+            return true;
+        });
 
     }
 
