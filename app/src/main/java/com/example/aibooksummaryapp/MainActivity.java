@@ -69,7 +69,34 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
+        // below is deprecitaeded code
+         bottomNavigationView.setOnNavigationItemReselectedListener();
+        // below is alternative
+        // Bottom Navigation Item Clicks
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.nav_home) {
+                 Toast.makeText(MainActivity.this, "Home Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            } else if (item.getItemId() == R.id.nav_saved)  {
+                 Toast.makeText(MainActivity.this, "Saved Selected", Toast.LENGTH_SHORT).show();
+                 return true;
+
+            }
+            else if (item.getItemId() == R.id.nav_recommend) {
+                Toast.makeText(MainActivity.this, "Recommend Selected", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+            return false;
+        });
+
+
+
+
+
+
+
     }
+
 
     private void loadBooks() {
         // Dummy data
