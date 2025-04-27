@@ -1,5 +1,6 @@
 package com.example.aibooksummaryapp;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 import com.example.aibooksummaryapp.R;
@@ -45,8 +46,10 @@ public class MainActivity extends AppCompatActivity {
         // Setup RecyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         bookList = new ArrayList<>();
+        Log.d("MainActivity","Loading books....");
         loadBooks();
-        bookAdapter = new BookAdapter(bookList);
+        bookAdapter = new BookAdapter(this, bookList);
+        bookAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(bookAdapter);
 
         // Setup Drawer Toggle
@@ -121,6 +124,17 @@ public class MainActivity extends AppCompatActivity {
         bookList.add(new BookSummary("The Alchemist", "Paulo Coelho", "A story about following your dreams.", "Fiction"));
         bookList.add(new BookSummary("Deep Work", "Cal Newport", "Rules for focused success in a distracted world.", "Productivity"));
         bookList.add(new BookSummary("Sapiens", "Yuval Noah Harari", "A brief history of humankind.", "History"));
+        bookList.add(new BookSummary("The Power of Habit", "Charles Duhigg", "The science of habit formation and how to change them.", "Self Improvement"));
+        bookList.add(new BookSummary("Educated", "Tara Westover", "A memoir of a woman who escapes her survivalist family to pursue education.", "Biography"));
+        bookList.add(new BookSummary("The Subtle Art of Not Giving a F*ck", "Mark Manson", "A counterintuitive guide to living a good life.", "Self Improvement"));
+        bookList.add(new BookSummary("Thinking, Fast and Slow", "Daniel Kahneman", "A groundbreaking look at how we think and make decisions.", "Psychology"));
+        bookList.add(new BookSummary("Becoming", "Michelle Obama", "A deeply personal memoir by the former First Lady.", "Biography"));
+        bookList.add(new BookSummary("The Four-Hour Workweek", "Tim Ferriss", "Escape the 9-5, live anywhere, and join the new rich.", "Productivity"));
+        bookList.add(new BookSummary("The Great Gatsby", "F. Scott Fitzgerald", "A story about the American dream and its disillusionment.", "Fiction"));
+        bookList.add(new BookSummary("1984", "George Orwell", "A dystopian novel that explores totalitarianism and surveillance.", "Fiction"));
+        bookList.add(new BookSummary("To Kill a Mockingbird", "Harper Lee", "A novel about racial injustice and moral growth in the Deep South.", "Fiction"));
+        bookList.add(new BookSummary("Quiet", "Susan Cain", "The power of introverts in a world that can't stop talking.", "Psychology"));
+        Log.d("MainActivity", "Books loaded: " + bookList.size());
     }
 
     private  void filterBooks(String query) {
@@ -136,7 +150,9 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "No books found", Toast.LENGTH_SHORT).show();
         }
 
-        recyclerView.setAdapter(new BookAdapter(filteredList));
+        bookAdapter = new BookAdapter(this,filteredList);
+        recyclerView.setAdapter(bookAdapter);
+        bookAdapter.notifyDataSetChanged();
     }
 
 
