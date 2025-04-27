@@ -25,7 +25,6 @@
             app:menu="@menu/top_app_bar_menu"
             app:layout_scrollFlags="scroll|enterAlways"/>
 
-        <!-- SearchView -->
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search_view"
             android:layout_width="match_parent"
@@ -33,16 +32,6 @@
             android:layout_marginTop="?attr/actionBarSize"
             android:queryHint="Search by title, author, or genre"
             app:layout_constraintTop_toBottomOf="@id/topAppBar" />
-
-        <!-- RecyclerView -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:padding="8dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            app:layout_constraintTop_toBottomOf="@id/search_view"
-            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation" />
 
         <!-- Bottom Navigation -->
         <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -52,6 +41,15 @@
             android:layout_gravity="bottom"
             android:background="?android:attr/windowBackground"
             app:menu="@menu/bottom_nav_menu" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="8dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+            app:layout_constraintTop_toBottomOf="@id/search_view" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <!-- Navigation Drawer -->

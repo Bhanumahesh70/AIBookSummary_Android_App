@@ -69,9 +69,6 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
-        // below is deprecitaeded code
-         bottomNavigationView.setOnNavigationItemReselectedListener();
-        // below is alternative
         // Bottom Navigation Item Clicks
         bottomNavigationView.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.nav_home) {
@@ -89,10 +86,30 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
 
+        // Top App bar clicks
+        topAppBar.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.action_search) {
+                Toast.makeText(this, "Search Clicked", Toast.LENGTH_SHORT).show();
+                return true;
+            } else if (item.getItemId() == R.id.action_profile)  {
+                Toast.makeText(this, "Profile Clicked", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+            return false;
+        });
 
+        // SearchView Handling
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
 
-
-
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
 
 
     }
@@ -104,7 +121,22 @@ public class MainActivity extends AppCompatActivity {
         bookList.add(new BookSummary("The Alchemist", "Paulo Coelho", "A story about following your dreams.", "Fiction"));
         bookList.add(new BookSummary("Deep Work", "Cal Newport", "Rules for focused success in a distracted world.", "Productivity"));
         bookList.add(new BookSummary("Sapiens", "Yuval Noah Harari", "A brief history of humankind.", "History"));
-        // Add more books if you want
+    }
+
+    private  void filterBooks(String query) {
+        List<BookSummary> filteredList = new ArrayList<>();
+        for (BookSummary book : bookList) {
+            if (book.getTitle().toLowerCase().contains(query.toLowerCase()) ||
+                    book.getAuthor().toLowerCase().contains(query.toLowerCase()) ||
+                    book.getCategory().toLowerCase().contains(query.toLowerCase())) {
+                filteredList.add(book);
+            }
+        }
+        if (filteredList.isEmpty()) {
+            Toast.makeText(this, "No books found", Toast.LENGTH_SHORT).show();
+        }
+
+        recyclerView.setAdapter(new BookAdapter(filteredList));
     }
 
 
