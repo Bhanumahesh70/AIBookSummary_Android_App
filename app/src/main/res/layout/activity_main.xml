@@ -8,19 +8,22 @@
     <!-- Main Content -->
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
 
         <!-- App Bar -->
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
-            style="@style/Widget.Material3.Toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:title="Quick Read"
+            android:title="@string/app_title"
+            android:titleTextColor="@android:color/white"
+            android:gravity="center"
+            app:titleCentered="true"
             android:background="?attr/colorPrimary"
-            android:theme="@style/ThemeOverlay.Material3.Dark.ActionBar"
             app:navigationIcon="@drawable/ic_menu"
-            app:menu="@menu/top_app_bar_menu" />
+            app:menu="@menu/top_app_bar_menu"
+            app:layout_scrollFlags="scroll|enterAlways"/>
 
         <!-- SearchView -->
         <androidx.appcompat.widget.SearchView
