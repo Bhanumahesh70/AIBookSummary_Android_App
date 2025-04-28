@@ -8,23 +8,27 @@
     tools:context=".MainActivity">
 
     <!-- App Name (QuickRead) -->
-    <TextView
-        android:id="@+id/app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="QuickRead"
-        android:textSize="36sp"
-        android:textColor="@color/colorPrimary"
-        android:fontFamily="sans-serif-medium"
-        android:layout_marginBottom="40dp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/welcome_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    <!-- Adjust the vertical bias to center content -->
 
     <!-- Welcome Message -->
     <TextView
+        android:id="@+id/app_name"
+        style="@style/TextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="256dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="QuickRead"
+        android:textColor="@color/colorPrimary"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/welcome_text"
+        style="@style/TextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Welcome to QuickRead!"
@@ -32,22 +36,27 @@
         android:textColor="@android:color/black"
         android:layout_marginBottom="24dp"
         app:layout_constraintTop_toBottomOf="@id/app_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintVertical_bias="0.4"/>
 
     <!-- Sign In Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/google_sign_in_button"
+        style="@style/ButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign in with Google"
         android:textSize="16sp"
         android:layout_marginTop="24dp"
         app:cornerRadius="8dp"
-        app:icon="@drawable/ic_google_icon"  <!-- Add a Google icon for better UX -->
-    app:iconGravity="textStart"
-    app:layout_constraintTop_toBottomOf="@id/welcome_text"
+        app:icon="@drawable/google"
+        app:iconGravity="textStart"
+        app:layout_constraintTop_toBottomOf="@id/welcome_text"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintVertical_bias="0.6"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
