@@ -1,43 +1,97 @@
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="8dp"
-    app:cardElevation="4dp"
-    app:cardCornerRadius="12dp">
+    android:layout_margin="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="6dp"
+    app:cardBackgroundColor="?attr/colorSurfaceVariant"
+    app:strokeColor="?attr/colorOutline"
+    app:strokeWidth="1dp"
+    app:rippleColor="?attr/colorPrimaryContainer">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:orientation="vertical">
+        android:padding="20dp"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        >
 
+        <!-- Book Title -->
         <TextView
             android:id="@+id/book_title"
-            android:text="Book Title"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/book_author"
-            android:text="Author"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/book_category"
-            android:text="Category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/book_summary"
-            android:text="Summary goes here..."
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Who Says Elephants Can't Dance?"
+            android:textAppearance="?attr/textAppearanceHeadlineSmall"
+            android:textColor="?attr/colorOnSurface"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:paddingBottom="8dp" />
+
+        <!-- Author Label -->
+        <TextView
+            android:id="@+id/author_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Author:"
+            android:textAppearance="?attr/textAppearanceBodySmall"
+            android:textColor="?attr/colorSecondary"
+            android:paddingTop="4dp" />
+
+        <!-- Author Value -->
+        <TextView
+            android:id="@+id/book_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Louis V. Gerstner, Jr."
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:paddingBottom="8dp" />
+
+        <!-- Category Label -->
+        <TextView
+            android:id="@+id/category_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category:"
+            android:textAppearance="?attr/textAppearanceBodySmall"
+            android:textColor="?attr/colorSecondary"
+            android:paddingTop="4dp" />
+
+        <!-- Category Value -->
+        <TextView
+            android:id="@+id/book_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Business Economics"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:paddingBottom="8dp" />
+
+        <!-- Summary Label -->
+        <TextView
+            android:id="@+id/summary_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Summary:"
+            android:textAppearance="?attr/textAppearanceBodySmall"
+            android:textColor="?attr/colorSecondary"
+            android:paddingTop="4dp" />
+
+        <!-- Book Summary -->
+        <TextView
+            android:id="@+id/book_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="In 1990, IBM had its most profitable year ever. By 1993, the computer industry had changed so rapidly..."
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurface"
             android:maxLines="4"
-            android:ellipsize="end" />
+            android:ellipsize="end"
+            android:paddingTop="2dp" />
+
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
