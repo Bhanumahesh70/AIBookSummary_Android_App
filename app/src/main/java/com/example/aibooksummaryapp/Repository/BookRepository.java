@@ -1,38 +1,38 @@
 package com.example.aibooksummaryapp.Repository;
 
+import android.util.Log;
+
+import com.example.aibooksummaryapp.API_Interface.GoogleBookApiClient;
 import com.example.aibooksummaryapp.API_Interface.GoogleBooksApi;
 import com.example.aibooksummaryapp.Model.BookResponse;
 import com.example.aibooksummaryapp.Model.BookSummary;
+import com.google.gson.Gson;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class BookRepository {
-    private static final String BASE_URL = "https://www.googleapis.com/books/v1/volumes?q=";
-
     public void getRecommendedBooks(String query, BookListCallback callback) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        GoogleBooksApi api = retrofit.create(GoogleBooksApi.class);
+        GoogleBooksApi api = GoogleBookApiClient.getClient().create(GoogleBooksApi.class);
         Call<BookResponse> call = api.getBooks(query);
         call.enqueue(new Callback<BookResponse>() {
             @Override
             public void onResponse(Call<BookResponse> call, Response<BookResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
+                    BookResponse bookResponse = response.body();
+                    Log.d("BookRepository", "Received data: " + new Gson().toJson(bookResponse));
                     callback.onBooksFetched(response.body().getItems());
+                }else{
+                    Log.e("BookRepository", "Response failed or empty: " + response.message());
                 }
             }
 
             @Override
             public void onFailure(Call<BookResponse> call, Throwable t) {
+                Log.e("BookRepository", "API call failed: " + t.getMessage());
                 callback.onError(t.getMessage());
             }
         });

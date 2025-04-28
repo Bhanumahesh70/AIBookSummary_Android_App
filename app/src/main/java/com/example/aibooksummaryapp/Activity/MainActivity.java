@@ -10,10 +10,12 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aibooksummaryapp.R;
+import com.example.aibooksummaryapp.ViewModel.BookViewModel;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private RecyclerView recyclerView;
     private BookAdapter bookAdapter;
+    private BookViewModel bookViewModel;
     private List<BookSummary> bookList;
     private SearchView searchView;
     private BottomNavigationView bottomNavigationView;
@@ -49,10 +52,23 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         bookList = new ArrayList<>();
         Log.d("MainActivity","Loading books....");
-        loadBooks();
+       // loadBooks();
         bookAdapter = new BookAdapter(this, bookList);
         bookAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(bookAdapter);
+
+        //Get book details
+        bookViewModel = new ViewModelProvider(this).get(BookViewModel.class);
+        // Observe book list
+        bookViewModel.getBooks().observe(this, books -> {
+            if (books != null) {
+                bookAdapter.updateBooks(books);
+            }
+        });
+
+        // Fetch recommended books
+        String query = "recommended";  // Example query
+        bookViewModel.fetchRecommendedBooks(query);
 
         // Setup Drawer Toggle
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
