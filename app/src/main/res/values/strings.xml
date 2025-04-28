@@ -3,4 +3,6 @@
     <string name="app_title">Quick Read</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="default_web_client_id">822926105968-kn4rs48e06npobfffk74n60h1soo1s1p.apps.googleusercontent.com</string>
+
 </resources>

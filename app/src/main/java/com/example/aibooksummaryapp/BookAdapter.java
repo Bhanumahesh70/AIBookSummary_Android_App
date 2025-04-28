@@ -46,9 +46,9 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         BookSummary book = bookList.get(position);
         Log.d("BookAdapter", "Binding book: " + book.getTitle());
         holder.title.setText(book.getTitle());
-        holder.author.setText(book.getAuthor());
-        holder.summary.setText(book.getSummary());
-        holder.category.setText(book.getCategory());
+        holder.author.setText("Author: "+book.getAuthor());
+        holder.summary.setText("Summary: "+book.getSummary());
+        holder.category.setText("Category: "+book.getCategory());
     }
 
     @Override
