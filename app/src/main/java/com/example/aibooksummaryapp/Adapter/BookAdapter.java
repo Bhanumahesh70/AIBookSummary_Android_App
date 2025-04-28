@@ -1,6 +1,7 @@
 package com.example.aibooksummaryapp.Adapter;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,19 +50,36 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         Book book = bookList.get(position);
         Log.d("BookAdapter", "Binding book: " + book.getVolumeInfo().getTitle());
         holder.title.setText(book.getVolumeInfo().getTitle());
-        holder.summary.setText("Summary: "+book.getVolumeInfo().getDescription());
 
+
+        // Handle Authors
         if (book.getVolumeInfo().getAuthors() != null && !book.getVolumeInfo().getAuthors().isEmpty()) {
-            holder.author.setText("Author: " + book.getVolumeInfo().getAuthors().get(0)); // Only first author
+            StringBuilder authorsBuilder = new StringBuilder();
+            for (String author : book.getVolumeInfo().getAuthors()) {
+                authorsBuilder.append(author).append("\n");
+            }
+            holder.author.setText( authorsBuilder.toString().trim());
         } else {
-            holder.author.setText("Author: Unknown");
+            holder.author.setText("Unknown");
         }
+
+        // Handle Categories
         if (book.getVolumeInfo().getCategories() != null && !book.getVolumeInfo().getCategories().isEmpty()) {
-            holder.category.setText("Category: " + book.getVolumeInfo().getCategories().get(0)); // Only first category
+            StringBuilder categoriesBuilder = new StringBuilder();
+            for (String category : book.getVolumeInfo().getCategories()) {
+                categoriesBuilder.append(category).append("\n");
+            }
+            holder.category.setText(categoriesBuilder.toString().trim());
         } else {
-            holder.category.setText("Category: Unknown");
+            holder.category.setText(" Unknown");
         }
-        holder.summary.setText(book.getVolumeInfo().getDescription() != null ? book.getVolumeInfo().getDescription() : "No summary available");
+
+        // Handle Summary
+        if (book.getVolumeInfo().getDescription() != null && !book.getVolumeInfo().getDescription().isEmpty()) {
+            holder.summary.setText( book.getVolumeInfo().getDescription());
+        } else {
+            holder.summary.setText("Summary: No summary available");
+        }
     }
 
 

@@ -157,23 +157,44 @@ public class MainActivity extends AppCompatActivity {
 //        Log.d("MainActivity", "Books loaded: " + bookList.size());
     }
 
-    private  void filterBooks(String query) {
+    private void filterBooks(String query) {
         List<Book> filteredList = new ArrayList<>();
+        String lowerQuery = query.toLowerCase();
+
         for (Book book : bookList) {
-            if (book.getVolumeInfo().getTitle().toLowerCase().contains(query.toLowerCase())
-                    //book.getVolumeInfo().getAuthors().get(0).toLowerCase().contains(query.toLowerCase()) ||
-                    //book.getVolumeInfo().getCategories().get(0).toLowerCase().contains(query.toLowerCase())
-            ) {
+            boolean matchesTitle = book.getVolumeInfo().getTitle() != null &&
+                    book.getVolumeInfo().getTitle().toLowerCase().contains(lowerQuery);
+
+            boolean matchesAuthor = book.getVolumeInfo().getAuthors() != null &&
+                    !book.getVolumeInfo().getAuthors().isEmpty() &&
+                    containsIgnoreCase(book.getVolumeInfo().getAuthors(), lowerQuery);
+
+            boolean matchesCategory = book.getVolumeInfo().getCategories() != null &&
+                    !book.getVolumeInfo().getCategories().isEmpty() &&
+                    containsIgnoreCase(book.getVolumeInfo().getCategories(), lowerQuery);
+
+            if (matchesTitle || matchesAuthor || matchesCategory) {
                 filteredList.add(book);
             }
         }
+
         if (filteredList.isEmpty()) {
             Toast.makeText(this, "No books found", Toast.LENGTH_SHORT).show();
         }
 
-        bookAdapter = new BookAdapter(this,filteredList);
+        bookAdapter = new BookAdapter(this, filteredList);
         recyclerView.setAdapter(bookAdapter);
         bookAdapter.notifyDataSetChanged();
+    }
+
+    // Helper method to search inside a List<String>
+    private boolean containsIgnoreCase(List<String> list, String query) {
+        for (String item : list) {
+            if (item != null && item.toLowerCase().contains(query)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 
