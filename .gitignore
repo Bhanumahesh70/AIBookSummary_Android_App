@@ -51,3 +51,6 @@ node_modules/
 
 .navigation/
 output.json
+
+*.tmp
+/app/src/main/res/drawable/google_icon_files/
