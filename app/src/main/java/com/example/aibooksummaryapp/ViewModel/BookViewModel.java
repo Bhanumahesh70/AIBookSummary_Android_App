@@ -6,13 +6,13 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.aibooksummaryapp.Model.BookSummary;
+import com.example.aibooksummaryapp.Model.Book;
 import com.example.aibooksummaryapp.Repository.BookRepository;
 
 import java.util.List;
 
 public class BookViewModel extends ViewModel {
-    private MutableLiveData<List<BookSummary>> bookList;
+    private MutableLiveData<List<Book>> bookList;
     private BookRepository bookRepository;
 
     public BookViewModel() {
@@ -20,14 +20,14 @@ public class BookViewModel extends ViewModel {
         bookList = new MutableLiveData<>();
     }
 
-    public LiveData<List<BookSummary>> getBooks() {
+    public LiveData<List<Book>> getBooks() {
         return bookList;
     }
 
     public void fetchRecommendedBooks(String query) {
         bookRepository.getRecommendedBooks(query, new BookRepository.BookListCallback() {
             @Override
-            public void onBooksFetched(List<BookSummary> books) {
+            public void onBooksFetched(List<Book> books) {
                 bookList.setValue(books);
             }
 

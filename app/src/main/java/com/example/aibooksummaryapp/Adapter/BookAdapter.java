@@ -10,15 +10,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.aibooksummaryapp.Model.BookSummary;
+import com.example.aibooksummaryapp.Model.Book;
 import com.example.aibooksummaryapp.R;
 
 import java.util.List;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> {
-    private List<BookSummary> bookList;
+    private List<Book> bookList;
     private Context context;
-    public BookAdapter(  Context context, List<BookSummary> bookList){
+    public BookAdapter(  Context context, List<Book> bookList){
         this.bookList = bookList;
         this.context = context;
 
@@ -46,20 +46,31 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull BookAdapter.BookViewHolder holder, int position) {
-        BookSummary book = bookList.get(position);
-        Log.d("BookAdapter", "Binding book: " + book.getTitle());
-        holder.title.setText(book.getTitle());
-        holder.author.setText("Author: "+book.getAuthor());
-        holder.summary.setText("Summary: "+book.getSummary());
-        holder.category.setText("Category: "+book.getCategory());
+        Book book = bookList.get(position);
+        Log.d("BookAdapter", "Binding book: " + book.getVolumeInfo().getTitle());
+        holder.title.setText(book.getVolumeInfo().getTitle());
+        holder.summary.setText("Summary: "+book.getVolumeInfo().getDescription());
+
+        if (book.getVolumeInfo().getAuthors() != null && !book.getVolumeInfo().getAuthors().isEmpty()) {
+            holder.author.setText("Author: " + book.getVolumeInfo().getAuthors().get(0)); // Only first author
+        } else {
+            holder.author.setText("Author: Unknown");
+        }
+        if (book.getVolumeInfo().getCategories() != null && !book.getVolumeInfo().getCategories().isEmpty()) {
+            holder.category.setText("Category: " + book.getVolumeInfo().getCategories().get(0)); // Only first category
+        } else {
+            holder.category.setText("Category: Unknown");
+        }
+        holder.summary.setText(book.getVolumeInfo().getDescription() != null ? book.getVolumeInfo().getDescription() : "No summary available");
     }
+
 
     @Override
     public int getItemCount() {
         return bookList.size();
     }
 
-    public void updateBooks(List<BookSummary> newBookList) {
+    public void updateBooks(List<Book> newBookList) {
         bookList.clear();
         bookList.addAll(newBookList);
         notifyDataSetChanged();

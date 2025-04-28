@@ -5,7 +5,7 @@ import android.util.Log;
 import com.example.aibooksummaryapp.API_Interface.GoogleBookApiClient;
 import com.example.aibooksummaryapp.API_Interface.GoogleBooksApi;
 import com.example.aibooksummaryapp.Model.BookResponse;
-import com.example.aibooksummaryapp.Model.BookSummary;
+import com.example.aibooksummaryapp.Model.Book;
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -39,7 +39,7 @@ public class BookRepository {
     }
 
     public interface BookListCallback {
-        void onBooksFetched(List<BookSummary> books);
+        void onBooksFetched(List<Book> books);
         void onError(String error);
     }
 }
