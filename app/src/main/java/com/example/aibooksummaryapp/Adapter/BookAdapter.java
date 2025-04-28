@@ -1,4 +1,4 @@
-package com.example.aibooksummaryapp;
+package com.example.aibooksummaryapp.Adapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.aibooksummaryapp.Model.BookSummary;
+import com.example.aibooksummaryapp.R;
 
 import java.util.List;
 

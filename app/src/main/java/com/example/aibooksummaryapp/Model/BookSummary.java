@@ -1,4 +1,4 @@
-package com.example.aibooksummaryapp;
+package com.example.aibooksummaryapp.Model;
 
 public class BookSummary {
     private String title;

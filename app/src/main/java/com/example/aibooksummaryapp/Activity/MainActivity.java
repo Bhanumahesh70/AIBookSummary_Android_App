@@ -1,10 +1,11 @@
-package com.example.aibooksummaryapp;
+package com.example.aibooksummaryapp.Activity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.widget.Toast;
-import com.example.aibooksummaryapp.R;
-import androidx.annotation.NonNull;
+
+import com.example.aibooksummaryapp.Adapter.BookAdapter;
+import com.example.aibooksummaryapp.Model.BookSummary;
+
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -12,6 +13,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.aibooksummaryapp.R;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
