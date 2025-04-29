@@ -30,6 +30,7 @@ public class SavedBooksActivity extends BaseNavActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+      //  bottomNavigationView.setSelectedItemId(R.id.nav_saved);
 
         // Inflate Saved Books layout inside the container_frame
         View savedBooksView = getLayoutInflater().inflate(R.layout.activity_saved_books, frameLayout, true);
@@ -37,7 +38,7 @@ public class SavedBooksActivity extends BaseNavActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         savedBooksList = new ArrayList<>();
-        bookAdapter = new BookAdapter(this, savedBooksList);
+        bookAdapter = new BookAdapter(this, savedBooksList,true);
         recyclerView.setAdapter(bookAdapter);
 
         fetchSavedBooks();
@@ -63,5 +64,45 @@ public class SavedBooksActivity extends BaseNavActivity {
                 Toast.makeText(SavedBooksActivity.this, "Failed to load saved books", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    @Override
+    protected void onSearchQuerySubmitted(String query) {
+
+        List<Book> filteredList = new ArrayList<>();
+        String lowerQuery = query.toLowerCase();
+
+        for (Book book : savedBooksList) {
+            boolean matchesTitle = book.getVolumeInfo().getTitle() != null &&
+                    book.getVolumeInfo().getTitle().toLowerCase().contains(lowerQuery);
+
+            boolean matchesAuthor = book.getVolumeInfo().getAuthors() != null &&
+                    !book.getVolumeInfo().getAuthors().isEmpty() && containsIgnoreCase(book.getVolumeInfo().getAuthors(), lowerQuery);
+
+            boolean matchesCategory = book.getVolumeInfo().getCategories() != null &&
+                    !book.getVolumeInfo().getCategories().isEmpty() &&
+                    containsIgnoreCase(book.getVolumeInfo().getCategories(), lowerQuery);
+
+            if (matchesTitle || matchesAuthor || matchesCategory) {
+                filteredList.add(book);
+            }
+        }
+
+        if (filteredList.isEmpty()) {
+            Toast.makeText(this, "No books found", Toast.LENGTH_SHORT).show();
+        }
+
+        bookAdapter = new BookAdapter(this, filteredList,false);
+        recyclerView.setAdapter(bookAdapter);
+        bookAdapter.notifyDataSetChanged();
+
+
+    }
+    private boolean containsIgnoreCase(List<String> list, String query) {
+        for (String item : list) {
+            if (item != null && item.toLowerCase().contains(query)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

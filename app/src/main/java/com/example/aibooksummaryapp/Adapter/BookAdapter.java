@@ -23,9 +23,11 @@ import java.util.List;
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> {
     private List<Book> bookList;
     private Context context;
-    public BookAdapter(  Context context, List<Book> bookList){
+    private boolean isSavedBooksScreen = false;
+    public BookAdapter(  Context context, List<Book> bookList, boolean isSavedBooksScreen){
         this.bookList = bookList;
         this.context = context;
+        this.isSavedBooksScreen = isSavedBooksScreen;
 
     }
 
@@ -87,22 +89,47 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
             holder.summary.setText("Summary: No summary available");
         }
 
-        holder.saveButton.setOnClickListener(v -> {
-            saveBookToFirebase(context, book);
+
+
+        if (isSavedBooksScreen) {
+            // For saved books screen
+            holder.saveButton.setText("Unsave");
+            holder.saveButton.setEnabled(true);
+            holder.saveButton.setOnClickListener(v -> unsaveBookFromFirebase(book.getId()));
+        } else {
+            checkIfBookSaved(book.getId(), holder.saveButton);
+
+            holder.saveButton.setOnClickListener(v -> {
+                saveBookToFirebase(book);
+            });
+        }
+    }
+    private void checkIfBookSaved(String bookId, Button saveButton) {
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("SavedBooks");
+        databaseRef.child(bookId).get().addOnSuccessListener(snapshot -> {
+            if (snapshot.exists()) {
+                saveButton.setText("Saved");
+                saveButton.setEnabled(false);
+            } else {
+                saveButton.setText("Save");
+                saveButton.setEnabled(true);
+            }
         });
     }
-    private void saveBookToFirebase(Context context, Book book) {
 
+    private void saveBookToFirebase(Book book) {
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("SavedBooks");
-
-        String bookId = book.getId();
-        databaseRef.child(bookId).setValue(book)
-                .addOnSuccessListener(aVoid ->
-                        Toast.makeText(context, "Book Saved!", Toast.LENGTH_SHORT).show())
-                .addOnFailureListener(e ->
-                        Toast.makeText(context, "Failed to Save Book", Toast.LENGTH_SHORT).show());
+        databaseRef.child(book.getId()).setValue(book)
+                .addOnSuccessListener(aVoid -> Toast.makeText(context, "Book Saved!", Toast.LENGTH_SHORT).show())
+                .addOnFailureListener(e -> Toast.makeText(context, "Failed to Save Book", Toast.LENGTH_SHORT).show());
     }
 
+    private void unsaveBookFromFirebase(String bookId) {
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("SavedBooks");
+        databaseRef.child(bookId).removeValue()
+                .addOnSuccessListener(aVoid -> Toast.makeText(context, "Book UnSaved!", Toast.LENGTH_SHORT).show())
+                .addOnFailureListener(e -> Toast.makeText(context, "Failed to Unsave Book", Toast.LENGTH_SHORT).show());
+    }
     @Override
     public int getItemCount() {
         return bookList.size();

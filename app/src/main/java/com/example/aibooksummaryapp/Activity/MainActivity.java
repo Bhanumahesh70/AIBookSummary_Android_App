@@ -1,29 +1,14 @@
 package com.example.aibooksummaryapp.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.Toast;
-
 import com.example.aibooksummaryapp.Adapter.BookAdapter;
 import com.example.aibooksummaryapp.Model.Book;
-
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.aibooksummaryapp.R;
 import com.example.aibooksummaryapp.ViewModel.BookViewModel;
-import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +24,7 @@ public class MainActivity extends BaseNavActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       // bottomNavigationView.setSelectedItemId(R.id.nav_home);
 
         // Inflate Home layout inside the main Activity layout
        // View homeView = LayoutInflater.from(this).inflate(R.layout.activity_home, frameLayout, true);
@@ -50,7 +36,7 @@ public class MainActivity extends BaseNavActivity {
         bookList = new ArrayList<>();
         Log.d("MainActivity","Loading books....");
        // loadBooks();
-        bookAdapter = new BookAdapter(this, bookList);
+        bookAdapter = new BookAdapter(this, bookList,false);
         bookAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(bookAdapter);
 
@@ -71,36 +57,6 @@ public class MainActivity extends BaseNavActivity {
     @Override
     protected void onSearchQuerySubmitted(String query) {
         bookViewModel.fetchRecommendedBooks(query);
-         /*
-        List<Book> filteredList = new ArrayList<>();
-        String lowerQuery = query.toLowerCase();
-
-        for (Book book : bookList) {
-            boolean matchesTitle = book.getVolumeInfo().getTitle() != null &&
-                    book.getVolumeInfo().getTitle().toLowerCase().contains(lowerQuery);
-
-            boolean matchesAuthor = book.getVolumeInfo().getAuthors() != null &&
-                    !book.getVolumeInfo().getAuthors().isEmpty() &&
-                    containsIgnoreCase(book.getVolumeInfo().getAuthors(), lowerQuery);
-
-            boolean matchesCategory = book.getVolumeInfo().getCategories() != null &&
-                    !book.getVolumeInfo().getCategories().isEmpty() &&
-                    containsIgnoreCase(book.getVolumeInfo().getCategories(), lowerQuery);
-
-            if (matchesTitle || matchesAuthor || matchesCategory) {
-                filteredList.add(book);
-            }
-        }
-
-        if (filteredList.isEmpty()) {
-            Toast.makeText(this, "No books found", Toast.LENGTH_SHORT).show();
-        }
-
-        bookAdapter = new BookAdapter(this, filteredList);
-        recyclerView.setAdapter(bookAdapter);
-        bookAdapter.notifyDataSetChanged();
-
-         */
     }
 
     private void loadBooks() {
