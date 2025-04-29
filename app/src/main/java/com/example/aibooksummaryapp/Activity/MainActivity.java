@@ -50,7 +50,7 @@ public class MainActivity extends BaseNavActivity {
         });
 
         // Fetch recommended books
-        String query = "recommended";
+        String query = "harry+ lord of the rings";
         bookViewModel.fetchRecommendedBooks(query);
 
     }

@@ -54,10 +54,10 @@ public class BaseNavActivity extends AppCompatActivity {
 
         // Navigation Item Clicks
         navigationView.setNavigationItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.drawer_home) {
-                Toast.makeText(this, "Home Clicked", Toast.LENGTH_SHORT).show();
-            } else if (item.getItemId() == R.id.drawer_about) {
-                Toast.makeText(this, "About Clicked", Toast.LENGTH_SHORT).show();
+            if (item.getItemId() == R.id.category_fiction) {
+                Toast.makeText(this, "category_fiction Clicked", Toast.LENGTH_SHORT).show();
+            } else if (item.getItemId() == R.id.category_nonfiction) {
+                Toast.makeText(this, "category_nonfiction Clicked", Toast.LENGTH_SHORT).show();
             }
             drawerLayout.closeDrawer(navigationView);
             return true;

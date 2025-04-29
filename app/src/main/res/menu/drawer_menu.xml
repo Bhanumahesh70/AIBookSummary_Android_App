@@ -1,4 +1,33 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/drawer_home" android:title="Home" />
-    <item android:id="@+id/drawer_about" android:title="About" />
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/category_fiction"
+            android:title="Fiction" />
+
+        <item
+            android:id="@+id/category_nonfiction"
+            android:title="Non-Fiction" />
+
+        <item
+            android:id="@+id/category_scifi"
+            android:title="Science Fiction" />
+
+        <item
+            android:id="@+id/category_biography"
+            android:title="Biography" />
+
+        <item
+            android:id="@+id/category_history"
+            android:title="History" />
+
+        <item
+            android:id="@+id/category_romance"
+            android:title="Romance" />
+
+        <item
+            android:id="@+id/category_thriller"
+            android:title="Thriller" />
+
+    </group>
 </menu>
