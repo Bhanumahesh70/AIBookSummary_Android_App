@@ -5,6 +5,7 @@ import java.util.List;
 
 public class VolumeInfo {
 
+
     private String title;
 
     private String subtitle;
@@ -114,4 +115,6 @@ public class VolumeInfo {
     public void setImageLinks(ImageLinks imageLinks) {
         this.imageLinks = imageLinks;
     }
+
+
 }

@@ -6,13 +6,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aibooksummaryapp.Model.Book;
 import com.example.aibooksummaryapp.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -27,6 +31,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
 
      public static class BookViewHolder extends RecyclerView.ViewHolder {
          TextView title, author, summary, category;
+         Button saveButton;
 
          public BookViewHolder (View itemView){
              super(itemView);
@@ -34,6 +39,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
              author = itemView.findViewById(R.id.book_author);
              summary = itemView.findViewById(R.id.book_summary);
              category = itemView.findViewById(R.id.book_category);
+             saveButton = itemView.findViewById(R.id.saveButton);
          }
 
      }
@@ -80,8 +86,22 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         } else {
             holder.summary.setText("Summary: No summary available");
         }
-    }
 
+        holder.saveButton.setOnClickListener(v -> {
+            saveBookToFirebase(context, book);
+        });
+    }
+    private void saveBookToFirebase(Context context, Book book) {
+
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("SavedBooks");
+
+        String bookId = book.getId();
+        databaseRef.child(bookId).setValue(book)
+                .addOnSuccessListener(aVoid ->
+                        Toast.makeText(context, "Book Saved!", Toast.LENGTH_SHORT).show())
+                .addOnFailureListener(e ->
+                        Toast.makeText(context, "Failed to Save Book", Toast.LENGTH_SHORT).show());
+    }
 
     @Override
     public int getItemCount() {

@@ -50,4 +50,5 @@ dependencies {
     implementation(libs.play.services)
     implementation(libs.credentials)
     implementation(libs.googleId)
+    implementation(libs.firebase.database)
 }
