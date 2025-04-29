@@ -2,6 +2,8 @@ package com.example.aibooksummaryapp.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
+
 import com.example.aibooksummaryapp.Adapter.BookAdapter;
 import com.example.aibooksummaryapp.Model.Book;
 import androidx.lifecycle.ViewModelProvider;
@@ -51,14 +53,18 @@ public class MainActivity extends BaseNavActivity {
 
         // Fetch recommended books
         String query = "harry+ lord of the rings";
-        bookViewModel.fetchRecommendedBooks(query);
+        bookViewModel.fetchBooks(query);
 
     }
     @Override
     protected void onSearchQuerySubmitted(String query) {
-        bookViewModel.fetchRecommendedBooks(query);
+        bookViewModel.fetchBooks(query);
     }
-
+    @Override
+    protected void onCategorySelected(String category) {
+        Toast.makeText(this, "Loading books in: " + category, Toast.LENGTH_SHORT).show();
+        bookViewModel.fetchBooksByCategory(category);
+    }
     private void loadBooks() {
         // Dummy data
 //        bookList.add(new Book("Atomic Habits", "James Clear", "An easy and proven way to build good habits and break bad ones.", "Self Improvement"));

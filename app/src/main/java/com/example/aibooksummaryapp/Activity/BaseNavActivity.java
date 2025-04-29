@@ -42,7 +42,7 @@ public class BaseNavActivity extends AppCompatActivity {
 
     }
 
-    private void setupDrawer(){
+    private void setupDrawer() {
         // Setup Drawer Toggle
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, topAppBar,
@@ -54,16 +54,34 @@ public class BaseNavActivity extends AppCompatActivity {
 
         // Navigation Item Clicks
         navigationView.setNavigationItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.category_fiction) {
-                Toast.makeText(this, "category_fiction Clicked", Toast.LENGTH_SHORT).show();
-            } else if (item.getItemId() == R.id.category_nonfiction) {
-                Toast.makeText(this, "category_nonfiction Clicked", Toast.LENGTH_SHORT).show();
+            String selectedCategory = null;
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.category_fiction) {
+                selectedCategory = "Fiction";
+            } else if (itemId == R.id.category_nonfiction) {
+                selectedCategory = "Non-Fiction";
+            } else if (itemId == R.id.category_scifi) {
+                selectedCategory = "Science Fiction";
+            } else if (itemId == R.id.category_biography) {
+                selectedCategory = "Biography";
+            } else if (itemId == R.id.category_history) {
+                selectedCategory = "History";
+            } else if (itemId == R.id.category_romance) {
+                selectedCategory = "Romance";
+            } else if (itemId == R.id.category_thriller) {
+                selectedCategory = "Thriller";
             }
+
+            if (selectedCategory != null) {
+                onCategorySelected(selectedCategory);
+            }
+
             drawerLayout.closeDrawer(navigationView);
             return true;
         });
     }
-
+    protected void onCategorySelected(String category) {}
     private void setupBottomNavigation(){
         // Bottom Navigation Item Clicks
         bottomNavigationView.setOnItemSelectedListener(item -> {

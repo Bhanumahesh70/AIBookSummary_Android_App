@@ -24,8 +24,8 @@ public class BookViewModel extends ViewModel {
         return bookList;
     }
 
-    public void fetchRecommendedBooks(String query) {
-        bookRepository.getRecommendedBooks(query, new BookRepository.BookListCallback() {
+    public void fetchBooks(String query) {
+        bookRepository.getBooks(query, new BookRepository.BookListCallback() {
             @Override
             public void onBooksFetched(List<Book> books) {
                 bookList.setValue(books);
@@ -36,5 +36,9 @@ public class BookViewModel extends ViewModel {
                 Log.e("BookViewModel", error);
             }
         });
+    }
+    public void fetchBooksByCategory(String category) {
+        String query = "subject:" + category;
+        fetchBooks(query);
     }
 }
