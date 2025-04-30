@@ -139,11 +139,11 @@ public class BaseNavActivity extends AppCompatActivity {
                 startActivity(new Intent(BaseNavActivity.this, SavedBooksActivity.class));
                 return true;
 
-            }
+            }/*
             else if (item.getItemId() == R.id.nav_recommend) {
                 //Toast.makeText(MainActivity.this, "Recommend Selected", Toast.LENGTH_SHORT).show();
                 return true;
-            }
+            }*/
             return false;
         });
     }
@@ -152,13 +152,14 @@ public class BaseNavActivity extends AppCompatActivity {
 
         // Top App bar clicks
         topAppBar.setOnMenuItemClickListener(item -> {
+            /*
             if (item.getItemId() == R.id.action_search) {
                 Toast.makeText(this, "Search Clicked", Toast.LENGTH_SHORT).show();
                 return true;
             } else if (item.getItemId() == R.id.action_profile)  {
                 Toast.makeText(this, "Profile Clicked", Toast.LENGTH_SHORT).show();
                 return true;
-            }
+            }*/
             return false;
         });
     }
