@@ -36,6 +36,8 @@ firebase-crashlytics-buildtools = { group = "com.google.firebase", name = "fireb
 firebase_database ={module="com.google.firebase:firebase-database", version.ref = "firebase_database"}
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide" }
+openai-retrofit = { module = "com.squareup.retrofit2:retrofit", version = "2.9.0" }
+openai-gson = { module = "com.squareup.retrofit2:converter-gson", version = "2.9.0" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

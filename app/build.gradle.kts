@@ -53,4 +53,6 @@ dependencies {
     implementation(libs.firebase.database)
     implementation(libs.glide)
     annotationProcessor(libs.glide.compiler)
+    implementation(libs.openai.retrofit)
+    implementation(libs.openai.gson)
 }
