@@ -2,16 +2,24 @@
     <group android:checkableBehavior="single">
 
         <item
+            android:id="@+id/category_action"
+            android:title="Action" />
+
+        <item
+            android:id="@+id/category_adventure"
+            android:title="Adventure" />
+
+        <item
+            android:id="@+id/category_fantasy"
+            android:title="Fantasy" />
+
+        <item
             android:id="@+id/category_fiction"
             android:title="Fiction" />
 
         <item
             android:id="@+id/category_nonfiction"
-            android:title="Non-Fiction" />
-
-        <item
-            android:id="@+id/category_scifi"
-            android:title="Science Fiction" />
+            android:title="Non-fiction" />
 
         <item
             android:id="@+id/category_biography"
@@ -28,6 +36,86 @@
         <item
             android:id="@+id/category_thriller"
             android:title="Thriller" />
+
+        <item
+            android:id="@+id/category_scifi"
+            android:title="Science Fiction" />
+
+        <item
+            android:id="@+id/category_mystery"
+            android:title="Mystery" />
+
+        <item
+            android:id="@+id/category_poetry"
+            android:title="Poetry" />
+
+        <item
+            android:id="@+id/category_comics"
+            android:title="Comics" />
+
+        <item
+            android:id="@+id/category_philosophy"
+            android:title="Philosophy" />
+
+        <item
+            android:id="@+id/category_education"
+            android:title="Education" />
+
+        <item
+            android:id="@+id/category_health"
+            android:title="Health" />
+
+        <item
+            android:id="@+id/category_cooking"
+            android:title="Cooking" />
+
+        <item
+            android:id="@+id/category_travel"
+            android:title="Travel" />
+
+        <item
+            android:id="@+id/category_music"
+            android:title="Music" />
+
+        <item
+            android:id="@+id/category_art"
+            android:title="Art" />
+
+        <item
+            android:id="@+id/category_science"
+            android:title="Science" />
+
+        <item
+            android:id="@+id/category_computers"
+            android:title="Computers" />
+
+        <item
+            android:id="@+id/category_psychology"
+            android:title="Psychology" />
+
+        <item
+            android:id="@+id/category_sports"
+            android:title="Sports" />
+
+        <item
+            android:id="@+id/category_law"
+            android:title="Law" />
+
+        <item
+            android:id="@+id/category_religion"
+            android:title="Religion" />
+
+        <item
+            android:id="@+id/category_medical"
+            android:title="Medical" />
+
+        <item
+            android:id="@+id/category_mathematics"
+            android:title="Mathematics" />
+
+        <item
+            android:id="@+id/category_selfhelp"
+            android:title="Self-Help" />
 
     </group>
 </menu>
