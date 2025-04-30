@@ -24,8 +24,8 @@ public class BookViewModel extends ViewModel {
         return bookList;
     }
 
-    public void fetchBooks(String query) {
-        bookRepository.getBooks(query, new BookRepository.BookListCallback() {
+    public void fetchBooks(String query, int startIndex, int maxResults) {
+        bookRepository.getBooks(query,startIndex, maxResults, new BookRepository.BookListCallback() {
             @Override
             public void onBooksFetched(List<Book> books) {
                 bookList.setValue(books);
@@ -37,8 +37,8 @@ public class BookViewModel extends ViewModel {
             }
         });
     }
-    public void fetchBooksByCategory(String category) {
+    public void fetchBooksByCategory(String category,int startIndex, int maxResults) {
         String query = "subject:" + category;
-        fetchBooks(query);
+        fetchBooks(query, startIndex, maxResults);
     }
 }

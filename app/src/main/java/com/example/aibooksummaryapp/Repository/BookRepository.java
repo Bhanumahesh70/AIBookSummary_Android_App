@@ -15,9 +15,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BookRepository {
-    public void getBooks(String query, BookListCallback callback) {
+    public void getBooks(String query, int startIndex, int maxResults, BookListCallback callback) {
         GoogleBooksApi api = GoogleBookApiClient.getClient().create(GoogleBooksApi.class);
-        Call<BookResponse> call = api.getBooks(query);
+        Call<BookResponse> call = api.getBooks(query,startIndex, maxResults);
         call.enqueue(new Callback<BookResponse>() {
             @Override
             public void onResponse(Call<BookResponse> call, Response<BookResponse> response) {

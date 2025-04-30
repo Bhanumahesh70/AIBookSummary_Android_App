@@ -53,17 +53,17 @@ public class MainActivity extends BaseNavActivity {
 
         // Fetch recommended books
         String query = "harry+ lord of the rings";
-        bookViewModel.fetchBooks(query);
+        bookViewModel.fetchBooks(query,0,40);
 
     }
     @Override
     protected void onSearchQuerySubmitted(String query) {
-        bookViewModel.fetchBooks(query);
+        bookViewModel.fetchBooks(query,0, 40);
     }
     @Override
     protected void onCategorySelected(String category) {
         Toast.makeText(this, "Loading books in: " + category, Toast.LENGTH_SHORT).show();
-        bookViewModel.fetchBooksByCategory(category);
+        bookViewModel.fetchBooksByCategory(category,0, 40);
     }
     private void loadBooks() {
         // Dummy data

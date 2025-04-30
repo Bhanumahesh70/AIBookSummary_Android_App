@@ -8,5 +8,6 @@ import retrofit2.http.Query;
 
 public interface GoogleBooksApi {
     @GET("volumes")
-    Call<BookResponse> getBooks(@Query("q") String query);
+    Call<BookResponse> getBooks(@Query("q") String query,@Query("startIndex") int startIndex,
+    @Query("maxResults") int maxResults);
 }
