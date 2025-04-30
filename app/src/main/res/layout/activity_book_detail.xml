@@ -69,6 +69,22 @@
         android:textAppearance="?attr/textAppearanceBodyMedium"
         android:textColor="?attr/colorOnSurface"
         android:paddingTop="8dp" />
+    <Button
+        android:id="@+id/summarybutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Get AI Summary"
+        android:layout_marginTop="16dp"
+        style="?attr/materialButtonOutlinedStyle" />
+
+    <TextView
+        android:id="@+id/summary_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AI Summary will appear here."
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:textColor="?attr/colorOnSurface"
+        android:paddingTop="12dp" />
 
     <!-- Links -->
     <LinearLayout

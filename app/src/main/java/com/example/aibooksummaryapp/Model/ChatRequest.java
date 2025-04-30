@@ -11,6 +11,14 @@ public class ChatRequest {
         this.messages = messages;
     }
 
+    public String getModel() {
+        return model;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
     public static class Message {
         private String role;
         private String content;
@@ -19,5 +27,14 @@ public class ChatRequest {
             this.role = role;
             this.content = content;
         }
+
+        public String getRole() {
+            return role;
+        }
+
+        public String getContent() {
+            return content;
+        }
     }
 }
+

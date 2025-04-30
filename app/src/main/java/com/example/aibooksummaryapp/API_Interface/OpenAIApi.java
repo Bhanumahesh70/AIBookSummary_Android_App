@@ -11,8 +11,7 @@ import retrofit2.http.POST;
 public interface OpenAIApi {
     @Headers({
             "Content-Type: application/json",
-            "Authorization: Bearer YOUR_API_KEY" // replace this at runtime in real apps
     })
-    @POST("https://api.openai.com/v1/chat/completions")
+    @POST("v1/chat/completions")
     Call<ChatResponse> getChatCompletion(@Body ChatRequest request);
 }
