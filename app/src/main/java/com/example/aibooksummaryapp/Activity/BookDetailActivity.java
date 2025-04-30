@@ -62,14 +62,14 @@ public class BookDetailActivity extends BaseNavActivity {
             descriptionView.setText(info.getDescription() != null ? info.getDescription() : "No description available.");
 
             // Book cover image
-            if (info.getImageLinks() != null && info.getImageLinks().getThumbnail() != null) {
-                Glide.with(this)
-                        .load(info.getImageLinks().getThumbnail())
-                        .into(bookCover);
-            } else {
-               // bookCover.setImageResource(R.drawable.placeholder_image);
+            String thumbnailUrl = info.getImageLinks().getSmallThumbnail();
+            if (thumbnailUrl != null && thumbnailUrl.startsWith("http://")) {
+                thumbnailUrl = thumbnailUrl.replace("http://", "https://");
             }
 
+            Glide.with(this)
+                    .load(thumbnailUrl)
+                    .into(bookCover);
             // Preview button
             if (info.getPreviewLink() != null) {
                 previewButton.setOnClickListener(v -> {
