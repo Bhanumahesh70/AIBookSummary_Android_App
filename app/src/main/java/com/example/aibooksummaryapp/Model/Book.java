@@ -1,6 +1,8 @@
 package com.example.aibooksummaryapp.Model;
 
-public class Book {
+import java.io.Serializable;
+
+public class Book implements Serializable {
 
     private String id;
     private VolumeInfo volumeInfo;

@@ -51,4 +51,6 @@ dependencies {
     implementation(libs.credentials)
     implementation(libs.googleId)
     implementation(libs.firebase.database)
+    implementation(libs.glide)
+    annotationProcessor(libs.glide.compiler)
 }

@@ -1,9 +1,10 @@
 package com.example.aibooksummaryapp.Model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-public class VolumeInfo {
+public class VolumeInfo implements Serializable {
 
 
     private String title;

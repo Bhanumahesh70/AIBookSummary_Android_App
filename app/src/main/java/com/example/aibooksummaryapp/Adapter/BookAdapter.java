@@ -24,10 +24,12 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     private List<Book> bookList;
     private Context context;
     private boolean isSavedBooksScreen = false;
-    public BookAdapter(  Context context, List<Book> bookList, boolean isSavedBooksScreen){
+    private OnBookClickListener listener;
+    public BookAdapter(  Context context, List<Book> bookList, boolean isSavedBooksScreen,OnBookClickListener listener){
         this.bookList = bookList;
         this.context = context;
         this.isSavedBooksScreen = isSavedBooksScreen;
+        this.listener = listener;
 
     }
 
@@ -103,6 +105,12 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
                 saveBookToFirebase(book);
             });
         }
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onBookClick(bookList.get(position));
+            }
+        });
     }
     private void checkIfBookSaved(String bookId, Button saveButton) {
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("SavedBooks");
@@ -139,5 +147,8 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         bookList.clear();
         bookList.addAll(newBookList);
         notifyDataSetChanged();
+    }
+    public interface OnBookClickListener {
+        void onBookClick(Book book);
     }
 }

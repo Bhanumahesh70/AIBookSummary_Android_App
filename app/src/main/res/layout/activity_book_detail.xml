@@ -1,0 +1,98 @@
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/detail_scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+<LinearLayout
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/colorSurface">
+
+    <!-- Book Cover Image -->
+    <ImageView
+        android:id="@+id/bookcover"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="book_cover"
+        android:background="?attr/colorSurfaceContainer"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/detail_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceHeadlineMedium"
+        android:textColor="?attr/colorOnSurface"
+        android:text="Book Title" />
+
+    <!-- Subtitle -->
+    <TextView
+        android:id="@+id/detailsubtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        android:text="Subtitle"
+        android:paddingTop="4dp"
+        android:paddingBottom="12dp" />
+
+    <!-- Authors, Publisher, Published Date -->
+    <TextView
+        android:id="@+id/detailmeta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="By Author • Publisher • 2022"
+        android:textAppearance="?attr/textAppearanceBodySmall"
+        android:textColor="?attr/colorSecondary" />
+
+    <!-- Categories -->
+    <TextView
+        android:id="@+id/detail_categories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Categories: Tech, AI"
+        android:textAppearance="?attr/textAppearanceBodySmall"
+        android:textColor="?attr/colorSecondary"
+        android:paddingTop="8dp" />
+
+    <!-- Description -->
+    <TextView
+        android:id="@+id/detail_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Full description here..."
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        android:textColor="?attr/colorOnSurface"
+        android:paddingTop="8dp" />
+
+    <!-- Links -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="16dp">
+
+        <Button
+            android:id="@+id/previewbutton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Preview"
+            style="?attr/materialButtonOutlinedStyle" />
+
+        <Button
+            android:id="@+id/infobutton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="More Info"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_marginStart="8dp"/>
+    </LinearLayout>
+</LinearLayout>
+</ScrollView>

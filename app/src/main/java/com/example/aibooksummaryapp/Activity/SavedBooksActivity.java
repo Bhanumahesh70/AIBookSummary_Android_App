@@ -1,5 +1,6 @@
 package com.example.aibooksummaryapp.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +40,11 @@ public class SavedBooksActivity extends BaseNavActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         savedBooksList = new ArrayList<>();
-        bookAdapter = new BookAdapter(this, savedBooksList,true);
+        bookAdapter = new BookAdapter(this, savedBooksList,true,  book -> {
+            Intent intent = new Intent(SavedBooksActivity.this, BookDetailActivity.class);
+            intent.putExtra("book", new Gson().toJson(book)); // Pass as JSON string
+            startActivity(intent);
+        });
         recyclerView.setAdapter(bookAdapter);
 
         fetchSavedBooks();
@@ -91,7 +97,11 @@ public class SavedBooksActivity extends BaseNavActivity {
             Toast.makeText(this, "No books found", Toast.LENGTH_SHORT).show();
         }
 
-        bookAdapter = new BookAdapter(this, filteredList,false);
+        bookAdapter = new BookAdapter(this, filteredList,false, book -> {
+            Intent intent = new Intent(SavedBooksActivity.this, BookDetailActivity.class);
+            intent.putExtra("book", new Gson().toJson(book)); // Pass as JSON string
+            startActivity(intent);
+        });
         recyclerView.setAdapter(bookAdapter);
         bookAdapter.notifyDataSetChanged();
 

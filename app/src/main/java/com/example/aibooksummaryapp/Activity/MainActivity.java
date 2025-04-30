@@ -1,4 +1,5 @@
 package com.example.aibooksummaryapp.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.aibooksummaryapp.R;
 import com.example.aibooksummaryapp.ViewModel.BookViewModel;
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +41,11 @@ public class MainActivity extends BaseNavActivity {
         bookList = new ArrayList<>();
         Log.d("MainActivity","Loading books....");
        // loadBooks();
-        bookAdapter = new BookAdapter(this, bookList,false);
+        bookAdapter = new BookAdapter(this, bookList,false, book -> {
+            Intent intent = new Intent(MainActivity.this, BookDetailActivity.class);
+            intent.putExtra("book", new Gson().toJson(book)); // Pass as JSON string
+            startActivity(intent);
+        });
         bookAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(bookAdapter);
 

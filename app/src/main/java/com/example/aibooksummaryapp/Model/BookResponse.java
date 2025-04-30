@@ -1,8 +1,9 @@
 package com.example.aibooksummaryapp.Model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class BookResponse {
+public class BookResponse implements Serializable {
     private String kind;
     private int totalItems;
     private List<Book> items;
