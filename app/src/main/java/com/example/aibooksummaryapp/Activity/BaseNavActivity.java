@@ -139,11 +139,12 @@ public class BaseNavActivity extends AppCompatActivity {
                 startActivity(new Intent(BaseNavActivity.this, SavedBooksActivity.class));
                 return true;
 
-            }/*
-            else if (item.getItemId() == R.id.nav_recommend) {
+            }
+            else if (item.getItemId() == R.id.action_profile)  {
                 //Toast.makeText(MainActivity.this, "Recommend Selected", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(BaseNavActivity.this, ProfileActivity.class));
                 return true;
-            }*/
+            }
             return false;
         });
     }

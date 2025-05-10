@@ -25,6 +25,7 @@
         <activity android:name=".Activity.MainActivity"/>
         <activity android:name=".Activity.SavedBooksActivity"/>
         <activity android:name=".Activity.BookDetailActivity"/>
+        <activity android:name=".Activity.ProfileActivity"/>
 
     </application>
 
