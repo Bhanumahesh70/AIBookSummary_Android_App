@@ -191,6 +191,7 @@ com.example.aibooksummaryapp
 ## **Login Screen**
 
 ![Login Activity](docs/screenshots/login-activity.png)
+![Login Activity2](docs/screenshots/login-activity2.png)
 
 * Users can log in using **Google Sign-In** (Firebase Authentication).
 * Secure login with Google account.
