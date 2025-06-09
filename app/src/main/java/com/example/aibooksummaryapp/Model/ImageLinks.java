@@ -1,3 +1,4 @@
+//Bhanumahesh Pasham
 package com.example.aibooksummaryapp.Model;
 
 public class ImageLinks {

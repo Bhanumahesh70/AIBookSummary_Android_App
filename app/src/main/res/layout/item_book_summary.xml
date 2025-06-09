@@ -78,7 +78,7 @@
             android:id="@+id/summary_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Summary:"
+            android:text="Description:"
             android:textAppearance="?attr/textAppearanceBodySmall"
             android:textColor="?attr/colorSecondary"
             android:paddingTop="4dp" />
