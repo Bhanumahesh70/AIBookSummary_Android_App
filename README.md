@@ -11,13 +11,12 @@ Built with **Google Books API**, **Firebase Authentication & Realtime Database**
 2. [ Tech Stack](#🛠️-tech-stack)
 3. [ Project Structure](#📂-project-structure)
 4. [ How it Works](#🚀-how-it-works)
-5. [ Demo](#🔗-demo)
-6. [ Implemented APIs](#✅-implemented-apis)
-7. [Extra Features](#🏱️-extra-features)
-8. [ Possible Future Improvements](#🚧-possible-future-improvements)
-9. [ Screenshots](#📸-screenshots)
-10. [ Contributing](#🤝-contributing)
-11. [License](#📄-license)
+5. [ Implemented APIs](#✅-implemented-apis)
+6. [Extra Features](#🏱️-extra-features)
+7. [ Possible Future Improvements](#🚧-possible-future-improvements)
+8. [ Screenshots](#📸-screenshots)
+9. [ Contributing](#🤝-contributing)
+10. [License](#📄-license)
 
 ---
 
@@ -152,11 +151,6 @@ com.example.aibooksummaryapp
 
 ---
 
-# 🔗 Demo
-
-GitHub Project: [AI Book Summary Android App](https://github.com/Bhanumahesh70/AIBookSummary_Android_App.git)
-
----
 
 # ✅ Implemented APIs
 
