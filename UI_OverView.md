@@ -1,4 +1,23 @@
 
+# Quick Read- AI Book Summary Android App – UI Overview  
+
+This application is designed to search, explore, and save books while generating **AI-powered summaries** using **Gemini AI API**.
+
+Built with **Java**, **Andriod Studios**, **Google Books API**, **Firebase Authentication & Realtime Database**, **Gemini AI API**, and **Material Design**.
+
+Below is a walkthrough of the key UI pages and their functionalities.  
+
+---
+## **Login Screen**
+
+![Login Activity](docs/screenshots/login-activity.png)
+![Login Activity2](docs/screenshots/login-activity2.png)
+
+* Users can log in using **Google Sign-In** (Firebase Authentication).
+* Secure login with Google account.
+* After successful login, users are navigated to Home.
+
+---
 ## **Home Activity**
 
 ![Home Activity](docs/screenshots/home-activity.png)
@@ -8,15 +27,6 @@
 * Option to **Save books** to favorites.
 
 ---
-
-## **Options to Save Books**
-
-![Options to Save Books](docs/screenshots/options_to_save_books.png)
-
-* **Save** button available on each book card.
-* Saved books are stored in **Firebase Realtime Database**.
-
----
 ## **Drawer Menu**
 
 ![Drawer Menu](docs/screenshots/drawer_menu.png)
@@ -24,6 +34,14 @@
 * **Category navigation** for books.
 * User can select from multiple categories (fiction, non-fiction, biography, history, science, etc.).
 * Dynamically loads books relevant to the selected category.
+
+---
+## **Options to Save Books**
+
+![Options to Save Books](docs/screenshots/options_to_save_books.png)
+
+* **Save** button available on each book card.
+* Saved books are stored in **Firebase Realtime Database**.
 
 ---
 
